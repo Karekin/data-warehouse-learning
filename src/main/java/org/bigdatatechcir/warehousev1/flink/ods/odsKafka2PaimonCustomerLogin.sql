@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS customer_login(
 ) WITH (
     'connector' = 'kafka',
     'topic' = 'customer_login',
-    'properties.bootstrap.servers' = '192.168.154.131:9092',
+    'properties.bootstrap.servers' = '192.168.0.103:9092',
     'properties.group.id' = 'customer_login',
     'scan.startup.mode' = 'group-offsets',
     'properties.auto.offset.reset' = 'earliest',

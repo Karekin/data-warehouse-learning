@@ -20,7 +20,7 @@ from json import JSONDecodeError
 #
 # 1. pip install confluent-kafka
 # 2. 修改kafka链接信息
-# conf = {'bootstrap.servers': "192.168.154.131:9092"}
+# conf = {'bootstrap.servers': "192.168.0.103:9092"}
 # 3. 创建kafka topic
 # 在 UI for Apache Kafka 中进行创建
 # 4. 运行operate_kafka.py
@@ -33,7 +33,7 @@ from datetime import datetime, date
 def send_to_kafka(topic, data_dict):
     try:
         # 配置kafka
-        conf = {'bootstrap.servers': "192.168.244.129:9092"}  # 替换为你的kafka服务器地址
+        conf = {'bootstrap.servers': "192.168.0.105:29092"}  # 替换为你的kafka服务器地址
 
         producer = Producer(conf)
 
@@ -107,7 +107,14 @@ def run():
         # 获取最小 product_brand_info_id
         product_brand_info_min_id = operate_mysql.get_product_brand_info_min_id()
         # 获取任意 product_brand_info_id
-        product_brand_info_random_id = random.randint(product_brand_info_min_id, product_brand_info_max_id)
+        # product_brand_info_random_id = random.randint(product_brand_info_min_id, product_brand_info_max_id)
+
+        if product_brand_info_min_id is not None and product_brand_info_max_id is not None:
+            product_brand_info_random_id = random.randint(product_brand_info_min_id, product_brand_info_max_id)
+        else:
+            # 处理 None 的情况，例如使用默认值
+            product_brand_info_random_id = 1  # default_value 是一个合适的整数
+
 
         # 获取供应商ID信息
         # 获取最大 product_brand_info_id
@@ -169,7 +176,13 @@ def run():
         # 获取最小 product_info_id
         product_info_min_id = operate_mysql.get_product_info_min_id()
         # 获取任意 product_info_id
-        product_info_random_id = random.randint(product_info_min_id, product_info_max_id)
+        # product_info_random_id = random.randint(product_info_min_id, product_info_max_id)
+
+        if product_info_min_id is not None and product_info_max_id is not None:
+            product_info_random_id = random.randint(product_info_min_id, product_info_max_id)
+        else:
+            # 处理 None 的情况，例如使用默认值
+            product_info_random_id = 1  # default_value 是一个合适的整数
 
         # 写入 order_master
         order_master_params = generate_order_master.return_order_master('kafka')

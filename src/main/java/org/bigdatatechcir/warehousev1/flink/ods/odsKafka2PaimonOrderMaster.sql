@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS order_master(
 ) WITH (
     'connector' = 'kafka',
     'topic' = 'order_master',
-    'properties.bootstrap.servers' = '192.168.154.131:9092',
+    'properties.bootstrap.servers' = '192.168.0.103:9092',
     'properties.group.id' = 'order_master',
     'scan.startup.mode' = 'group-offsets',
     'properties.auto.offset.reset' = 'earliest',

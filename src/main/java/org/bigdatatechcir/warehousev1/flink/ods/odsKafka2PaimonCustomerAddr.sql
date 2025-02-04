@@ -12,10 +12,10 @@ CREATE TABLE IF NOT EXISTS customer_addr(
 ) WITH (
     'connector' = 'kafka',
     'topic' = 'customer_addr',
-    'properties.bootstrap.servers' = '192.168.154.131:9092',
+    'properties.bootstrap.servers' = '192.168.0.105:9092',
     'properties.group.id' = 'customer_addr',
     'scan.startup.mode' = 'group-offsets',
-    'properties.auto.offset.reset' = 'earliest',
+    'properties.auto.offset.reset' = 'latest',
     'properties.enable.auto.commit'='true',
     'properties.auto.commit.interval.ms'='5000',
     'format' = 'json',

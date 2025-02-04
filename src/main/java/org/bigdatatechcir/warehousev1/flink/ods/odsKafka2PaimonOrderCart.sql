@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS order_cart(
 ) WITH (
     'connector' = 'kafka',
     'topic' = 'order_cart',
-    'properties.bootstrap.servers' = '192.168.154.131:9092',
+    'properties.bootstrap.servers' = '192.168.0.103:9092',
     'properties.group.id' = 'order_cart',
     'scan.startup.mode' = 'group-offsets',
     'properties.auto.offset.reset' = 'earliest',

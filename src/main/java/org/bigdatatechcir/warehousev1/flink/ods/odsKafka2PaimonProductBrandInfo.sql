@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS product_brand_info(
 ) WITH (
     'connector' = 'kafka',
     'topic' = 'product_brand_info',
-    'properties.bootstrap.servers' = '192.168.154.131:9092',
+    'properties.bootstrap.servers' = '192.168.0.103:9092',
     'properties.group.id' = 'product_brand_info',
     'scan.startup.mode' = 'group-offsets',
     'properties.auto.offset.reset' = 'earliest',

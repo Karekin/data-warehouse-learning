@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS customer_inf(
 ) WITH (
     'connector' = 'kafka',
     'topic' = 'customer_inf',
-    'properties.bootstrap.servers' = '192.168.154.131:9092',
+    'properties.bootstrap.servers' = '192.168.0.103:9092',
     'properties.group.id' = 'customer_inf',
     'scan.startup.mode' = 'group-offsets',
     'properties.auto.offset.reset' = 'earliest',

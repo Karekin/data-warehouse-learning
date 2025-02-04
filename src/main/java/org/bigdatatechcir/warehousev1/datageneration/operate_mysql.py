@@ -17,7 +17,7 @@ import generate_order_cart
 #  1. pip install mysql-connector-python
 #  2. 修改 数据库链接信息
 #  cnx = mysql.connector.connect(user='root', password='',
-#                                host='192.168.154.131',
+#                                host='192.168.0.103',
 #                                database='mall')
 #  3. 运行operate_mysql.py
 #
@@ -25,8 +25,8 @@ import generate_order_cart
 
 # 获取数据库连接
 def get_mysql_connect():
-    cnx = mysql.connector.connect(user='root', password='',
-                                  host='192.168.244.129',
+    cnx = mysql.connector.connect(user='root', password='123456',
+                                  host='192.168.0.105',
                                   database='mall')
     return cnx
 

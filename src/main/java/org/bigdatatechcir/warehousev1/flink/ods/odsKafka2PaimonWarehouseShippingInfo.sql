@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS warehouse_shipping_info(
 ) WITH (
     'connector' = 'kafka',
     'topic' = 'warehouse_shipping_info',
-    'properties.bootstrap.servers' = '192.168.154.131:9092',
+    'properties.bootstrap.servers' = '192.168.0.103:9092',
     'properties.group.id' = 'warehouse_shipping_info',
     'scan.startup.mode' = 'group-offsets',
     'properties.auto.offset.reset' = 'earliest',
