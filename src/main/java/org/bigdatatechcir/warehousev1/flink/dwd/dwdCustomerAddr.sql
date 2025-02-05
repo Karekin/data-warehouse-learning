@@ -1,11 +1,20 @@
 -- 创建CATALOG
-CREATE CATALOG my_catalog_ods WITH (
-    'type'='paimon',
-    'warehouse'='file:/opt/software/paimon_catelog'
+-- CREATE CATALOG my_catalog_ods WITH (
+--     'type'='paimon',
+--     'warehouse'='file:/opt/software/paimon_catelog'
+-- );
+
+CREATE CATALOG catalog_paimon WITH (
+    'type' = 'paimon',
+    'warehouse' = 's3://warehouse/wh',  -- S3 存储路径
+    's3.endpoint' = 'http://minio:9000',  -- S3 端点
+    's3.access-key' = 'admin',  -- S3 访问密钥
+    's3.secret-key' = 'password',  -- S3 密钥
+    's3.region' = 'us-east-1'  -- S3 区域
 );
 
 -- 切换CATALOG
-USE CATALOG my_catalog_ods;
+USE CATALOG catalog_paimon;
 
 -- 创建database
 create  DATABASE IF NOT EXISTS ods;

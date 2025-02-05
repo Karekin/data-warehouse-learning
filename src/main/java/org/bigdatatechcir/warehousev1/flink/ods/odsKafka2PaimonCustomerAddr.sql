@@ -12,10 +12,10 @@ CREATE TABLE IF NOT EXISTS customer_addr(
 ) WITH (
     'connector' = 'kafka',
     'topic' = 'customer_addr',
-    'properties.bootstrap.servers' = '192.168.0.105:9092',
-    'properties.group.id' = 'customer_addr',
+    'properties.bootstrap.servers' = 'kafka:9092',
+    'properties.group.id' = 'customer_addr3',
     'scan.startup.mode' = 'group-offsets',
-    'properties.auto.offset.reset' = 'latest',
+    'properties.auto.offset.reset' = 'earliest',
     'properties.enable.auto.commit'='true',
     'properties.auto.commit.interval.ms'='5000',
     'format' = 'json',
@@ -24,9 +24,18 @@ CREATE TABLE IF NOT EXISTS customer_addr(
 );
 
 -- 创建CATALOG
+-- CREATE CATALOG catalog_paimon WITH (
+--     'type'='paimon',
+--     'warehouse'='file:/opt/software/paimon_catelog'
+-- );
+
 CREATE CATALOG catalog_paimon WITH (
-    'type'='paimon',
-    'warehouse'='file:/opt/software/paimon_catelog'
+    'type' = 'paimon',
+    'warehouse' = 's3://warehouse/wh',  -- S3 存储路径
+    's3.endpoint' = 'http://minio:9000',  -- S3 端点
+    's3.access-key' = 'admin',  -- S3 访问密钥
+    's3.secret-key' = 'password',  -- S3 密钥
+    's3.region' = 'us-east-1'  -- S3 区域
 );
 
 -- 切换CATALOG
